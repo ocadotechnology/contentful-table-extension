@@ -1,0 +1,9 @@
+{
+  "id": "contentful-table-extension",
+  "name": "contentful-table-extension",
+  "srcdoc": "./build/index.html",
+  "fieldTypes": [
+    "Text",
+    "Object"
+  ]
+}
