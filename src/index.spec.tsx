@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { FieldExtensionSDK } from 'contentful-ui-extensions-sdk';
 import { App } from './index';
-import { render, fireEvent, cleanup, configure } from '@testing-library/react';
+import { render, cleanup, configure } from '@testing-library/react';
 
 configure({
   testIdAttribute: 'data-test-id'
