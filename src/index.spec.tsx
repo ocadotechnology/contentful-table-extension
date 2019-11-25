@@ -25,6 +25,16 @@ const sdk: any = {
   }
 };
 
+const dummyTableData = {
+  header: [
+    'header 1'
+  ],
+  body: [
+    ['Cell 1', 'Cell 2'],
+    ['Cell 3', 'Cell 4']
+  ]
+}
+
 describe('App', () => {
   beforeEach(() => {
     jest.resetAllMocks();
@@ -33,33 +43,15 @@ describe('App', () => {
   afterEach(cleanup);
 
   it('should read a value from field.getValue() and subscribe for external changes', () => {
-    sdk.field.getValue.mockImplementation(() => 'initial-value');
+    sdk.field.getValue.mockImplementation(() => dummyTableData);
     const { getByTestId } = renderComponent(sdk);
 
     expect(sdk.field.getValue).toHaveBeenCalled();
     expect(sdk.field.onValueChanged).toHaveBeenCalled();
-    expect((getByTestId('my-field') as HTMLInputElement).value).toEqual('initial-value');
   });
 
   it('should call starstartAutoResizer', () => {
     renderComponent(sdk);
     expect(sdk.window.startAutoResizer).toHaveBeenCalled();
-  });
-
-  it('should call setValue on every change in input and removeValue when input gets empty', () => {
-    const { getByTestId } = renderComponent(sdk);
-
-    fireEvent.change(getByTestId('my-field'), {
-      target: { value: 'new-value' }
-    });
-
-    expect(sdk.field.setValue).toHaveBeenCalledWith('new-value');
-
-    fireEvent.change(getByTestId('my-field'), {
-      target: { value: '' }
-    });
-
-    expect(sdk.field.setValue).toHaveBeenCalledTimes(1);
-    expect(sdk.field.removeValue).toHaveBeenCalledTimes(1);
   });
 });
