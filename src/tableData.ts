@@ -1,13 +1,8 @@
-import 'reflect-metadata';
 import produce from 'immer';
-import { jsonObject, jsonArrayMember } from 'typedjson';
 
-@jsonObject
 export default class TableData {
-  @jsonArrayMember(String)
   public header: string[] = ['Column 1'];
 
-  @jsonArrayMember(String, { dimensions: 2 })
   public body: string[][] = [['Cell']];
 
   public constructor(fields?: { header?: string[]; body?: string[][] }) {
@@ -58,5 +53,12 @@ export default class TableData {
     return produce(this, draftState => {
       draftState.header[index] = newValue;
     });
+  }
+
+  public serialize(): string {
+    return JSON.stringify({
+      header: this.header,
+      body: this.body
+    })
   }
 }

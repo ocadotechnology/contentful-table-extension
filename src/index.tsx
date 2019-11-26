@@ -1,8 +1,6 @@
-import 'reflect-metadata';
 import * as React from 'react';
 import { render } from 'react-dom';
 import { SectionHeading } from '@contentful/forma-36-react-components';
-import { TypedJSON, jsonMember, jsonObject } from 'typedjson';
 import { init, FieldExtensionSDK } from 'contentful-ui-extensions-sdk';
 import '@contentful/forma-36-react-components/dist/styles.css';
 import './index.css';
@@ -15,12 +13,12 @@ interface AppProps {
   sdk: FieldExtensionSDK;
 }
 
-@jsonObject
+
 class AppState {
-  @jsonMember
+
   table: TableData = new TableData();
 
-  public constructor(fields?: {table?: TableData}) {
+  public constructor(fields?: { table?: TableData }) {
     if (fields) {
       Object.assign(this, fields);
     }
@@ -33,12 +31,13 @@ export class App extends React.Component<AppProps, AppState> {
     this.state = this.jsonToState(props.sdk.field.getValue());
   }
 
-  stateToPlainJSON() {
-    return new TypedJSON(AppState).toPlainJson(this.state)
-  }
-
-  jsonToState(json: string): AppState {
-    return new TypedJSON(AppState).parse(json) || new AppState();
+  jsonToState(json: any): AppState {
+    try {
+      const appStateFields = { table: new TableData(json.table) }
+       return new AppState(appStateFields);
+    } catch (e) {
+      return new AppState()
+    }
   }
 
   detachExternalChangeHandler: Function | null = null;

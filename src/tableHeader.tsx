@@ -21,7 +21,7 @@ const TableHeader = ({ tableData, dataChanged }: TableHeaderProps) => (
           }}
         />
       ))}
-      <TableCell key="actions"></TableCell>
+      <TableCell key="actions" />
     </TableRow>
   </TableHead>
 );

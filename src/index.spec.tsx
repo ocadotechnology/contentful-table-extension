@@ -50,7 +50,7 @@ describe('App', () => {
     expect(sdk.field.onValueChanged).toHaveBeenCalled();
   });
 
-  it('should call starstartAutoResizer', () => {
+  it('should call startAutoResizer', () => {
     renderComponent(sdk);
     expect(sdk.window.startAutoResizer).toHaveBeenCalled();
   });

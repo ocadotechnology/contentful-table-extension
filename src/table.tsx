@@ -6,7 +6,6 @@ import {
   Button
 } from '@contentful/forma-36-react-components';
 import F36Tokens from '@contentful/forma-36-tokens';
-import styled from 'styled-components';
 import TableData from './tableData';
 import RemoveButton from './removeButton';
 import TableHeader from './tableHeader';
@@ -16,9 +15,7 @@ interface FieldSpacerProps {
   spacing: string;
 }
 
-const FieldSpacer = styled.div`
-  padding-bottom: ${({ spacing }: FieldSpacerProps) => spacing};
-`;
+const FieldSpacer = ({ spacing }: FieldSpacerProps) => <div style={{ paddingBottom: spacing }} />;
 
 interface TableProps {
   data: TableData;

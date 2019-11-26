@@ -34,19 +34,14 @@
     "help": "contentful-extension-scripts help"
   },
   "dependencies": {
-    "@contentful/forma-36-fcss": "^0.0.20",
+    "@contentful/forma-36-fcss": "^0.0.32",
     "@contentful/forma-36-react-components": "^3.11.3",
-    "@contentful/forma-36-tokens": "^0.3.0",
-    "@types/styled-components": "^4.4.0",
+    "@contentful/forma-36-tokens": "^0.4.5",
     "contentful-ui-extensions-sdk": "3.9.0",
     "immer": "^5.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-table": "^7.0.0-beta.12",
-    "reflect-metadata": "^0.1.13",
-    "styled-components": "^4.4.1",
-    "typedjson": "^1.5.1"
+    "react-dom": "^16.8.6"
   },
   "browserslist": [
     "last 5 Chrome version",
